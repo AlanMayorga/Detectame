@@ -1,0 +1,7 @@
+{
+  "name": "detectameApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
