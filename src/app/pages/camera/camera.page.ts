@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-camera',
@@ -27,7 +28,8 @@ export class CameraPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private loadingController: LoadingController,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private actionSheet: ActionSheetController) { }
 
   ngOnInit() {
 
@@ -53,13 +55,48 @@ export class CameraPage implements OnInit {
 
   }*/
  
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheet.create({
+      header: 'Seleccione una opción',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Galeria',
+        icon: 'image',
+        handler: () => {
+          this.takePicture(true);
+          console.log('Galeria clicked');
+        }
+      }, {
+        text: 'Cámara',
+        icon: 'camera',
+        handler: () => {
+          this.takePicture(false);
+          console.log('Cámara clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
 
-  async takePicture() {
+
+  async takePicture(option: boolean) {
+    let source = CameraSource.Camera;;
+    if (option) {
+      source = CameraSource.Photos;
+    }
+
     await Plugins.Camera.getPhoto({
       quality: 100,
       allowEditing: false,
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Photos
+      source: source
     }).then(image => {
       console.log(image);
       this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
@@ -68,6 +105,7 @@ export class CameraPage implements OnInit {
     }).catch(error => {
       console.log("Cancelado: " + error);
     });
+
   }
 
   viewImage($event: Event) {

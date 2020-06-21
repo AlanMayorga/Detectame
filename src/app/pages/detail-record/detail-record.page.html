@@ -35,7 +35,7 @@
             </ion-list-header>
 
             <div *ngFor="let prediction of record.predictions; let i = index">
-              <ion-item *ngIf="i <= 2">
+              <ion-item *ngIf="(prediction.probability * 100) > 70">
                 <ion-label class="ion-text-wrap">
                   <h2>{{prediction.tagName}}</h2>
                   <h3>%{{(prediction.probability * 100)}}</h3>

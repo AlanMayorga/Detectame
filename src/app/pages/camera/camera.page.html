@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="menu"></ion-menu-button>
+      <ion-menu-button color="primary" menu="menu"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Camera</ion-title>
+    <ion-title>Cámara</ion-title>
     <ion-buttons slot="end">
       <ion-button color="success" slot="end" (click)="sumit()">
         <ion-icon slot="end" name="send"></ion-icon>
@@ -17,14 +17,14 @@
 
 
   <!-- Inputs with labels -->
-  <ion-item>
+  <ion-item class="ion-margin-bottom">
     <ion-label class="ion-text-center">Ingrese su fotografia:</ion-label>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <!--<ion-item class="ion-margin-bottom">
     <ion-input id="img" accept="image/*" (change)="viewImage($event)" type="file" placeholder="Ingrese su imágen aquí">
     </ion-input>
-  </ion-item>
+  </ion-item>-->
 
   <div align="center">
     <img *ngIf="preview" [src]="preview">
@@ -33,8 +33,8 @@
   <!--<img [src]="photo">  width="50%" height="50%"-->
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="takePicture()">
-      <ion-icon name="camera"></ion-icon>
+    <ion-fab-button (click)="presentActionSheet()">
+      <ion-icon name="cloud-upload"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
