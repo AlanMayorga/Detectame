@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class PhotoServiceService {
 
   private dbRef = this.db.collection('analysis');
-  private storageRef = this.storage.ref('photo/');
+  private storageRef = this.storage.ref('photos/');
 
   constructor(private storage: AngularFireStorage,
     private db: AngularFirestore) { }
@@ -36,8 +36,8 @@ export class PhotoServiceService {
       dia: new Date().toLocaleDateString(),
       hora: new Date().toLocaleTimeString()
     }).then((data) => {
-      console.log("Analisis agregado: " + data);
-      return "Analisis agregado";
+      console.log("Análisis agregado: " + data);
+      return "Análisis agregado";
     }).catch(error => {
       console.log("Error al agregar el analisis: " + error);
       return "Error al agregar intente nuevamente";
@@ -63,7 +63,7 @@ export class PhotoServiceService {
       this.storageRef.child(idImg).delete();
       console.log("Delete result => ");
       console.log(result);
-      return "Analisis eliminado";
+      return "Análisis eliminado correctamente";
     }).catch(error => {
       console.log("Error delete =>");
       console.log(error);

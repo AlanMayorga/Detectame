@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
     },
     {
       title: 'Chat',
-      url: 'chat',
+      url: 'bot',
       icon: 'chatbubbles'
     }
   ]

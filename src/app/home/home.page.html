@@ -11,10 +11,23 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">¡BIENVENIDO!</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="ion-text-justify">
+      Está aplicación tiene el propósito de ayudar a las personas que no conocen sobre las enfermedades que su animal pudiera tener, dando
+      análisis con base a imágenes, está aplicación no sustituye a ningún especialista solo sirve como referencia. 
+    </ion-card-content>
+  </ion-card>
+
   <ion-grid>
     <ion-row>
       <ion-col size-xs="12" size-lg="6" *ngFor="let record of records">
         <ion-card>
+
+
 
           <ion-grid>
             <ion-row>

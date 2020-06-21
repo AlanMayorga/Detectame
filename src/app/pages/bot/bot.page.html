@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" menu="menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngFor="let msg of messages">
+    <ion-card>
+      <ion-card-content>
+        <ion-label>{{msg.msg}}</ion-label>
+        <p>{{msg.date}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <ion-input [(ngModel)]=msg type="text" placeholder="Escriba un mensaje"></ion-input>
+    <ion-button (click)="sendMessage()" slot="end" fill="clear" shape="round">
+      <ion-icon slot="icon-only" name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>

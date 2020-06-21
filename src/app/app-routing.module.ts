@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'detail-record/:id',
     loadChildren: () => import('./pages/detail-record/detail-record.module').then( m => m.DetailRecordPageModule)
   },
+  {
+    path: 'bot',
+    loadChildren: () => import('./pages/bot/bot.module').then( m => m.BotPageModule)
+  },
 ];
 
 @NgModule({

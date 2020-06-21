@@ -5,7 +5,7 @@
 }*/
 
 export const APIURL = {
-    url: 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/f8353f5d-8a11-4609-92ba-4f16980e9857/classify/iterations/Iteration2/url',
+    url: 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/f8353f5d-8a11-4609-92ba-4f16980e9857/classify/iterations/Iteration8/url',
     key: 'ca962341b055424190a2b65ce9a71692',
     contenttype: 'application/json' //json - octet-stream
 }

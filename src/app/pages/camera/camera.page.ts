@@ -32,7 +32,10 @@ export class CameraPage implements OnInit {
     private actionSheet: ActionSheetController) { }
 
   ngOnInit() {
+  }
 
+  test() {
+    
   }
 
   /*addFile() {
@@ -54,7 +57,7 @@ export class CameraPage implements OnInit {
     });
 
   }*/
- 
+
   async presentActionSheet() {
     const actionSheet = await this.actionSheet.create({
       header: 'Seleccione una opción',
@@ -130,20 +133,8 @@ export class CameraPage implements OnInit {
 
   async sumit() {
     if (this.preview != null) {
-      /*this.presentLoading();
-      let img = "https://www.mediterraneannatural.com/wp-content/uploads/2019/07/Dermatitis-alergica-a-la-picadura-de-pulga-en-perros-1.jpg";
-      this.cvService.setImg(img).subscribe((result: any) => {
-        console.log("REsult => ");
-        console.log(result);
-        console.log("Predes ictions => ");
-        console.log(result.predictions);
-        this.presentToast("Eviado", "success");
-        setTimeout(() => {
-          this.dismissLoading();
-          //this.router.navigate(['/home']);
-        }, 500);
-      });*/
-      /*let photo = await this.photoService.savePhoto(this.preview);
+      this.presentLoading();
+      let photo = await this.photoService.savePhoto(this.preview);
       console.log("esta es la url => ");
       console.log(photo);
       //let url ="https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg";
@@ -153,21 +144,33 @@ export class CameraPage implements OnInit {
         console.log("Predictions => ");
         console.log(result.predictions);
         let predictions = result.predictions;
-        let msg = this.photoService.createAnalysis(predictions, photo.name, photo.url);
-        if (msg == "Analisis agregado") {
-          this.presentToast(msg, "success");
+        this.photoService.createAnalysis(predictions, photo.name, photo.url).then(msg => {
+          console.log("MSG => ");
+          console.log(msg);
+          if (msg == "Análisis agregado") {
+            this.presentToast(msg, "success");
             setTimeout(() => {
               this.dismissLoading();
+              this.preview = "";
               this.router.navigate(['/home']);
-            }, 500);
-        } else {
-          this.presentToast(msg, "error");
+            }, 1000);
+          } else {
+            this.presentToast(msg, "error");
             setTimeout(() => {
               this.dismissLoading();
-              this.router.navigate(['/home']);
-            }, 500);
-        }
-      });*/
+            }, 1000);
+          }
+        }).catch(error => {
+          console.log("MSG error => ");
+          console.log(error);
+          if (error == "Error al agregar intente nuevamente") {
+            this.presentToast(error, "error");
+            setTimeout(() => {
+              this.dismissLoading();
+            }, 1000);
+          }
+        });
+      });
     } else {
       this.presentAlert();
     }
@@ -187,6 +190,7 @@ export class CameraPage implements OnInit {
     });
     await this.loading.present();
   }
+  
   async dismissLoading() {
     await this.loading.dismiss();
   }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="menu"></ion-menu-button>
+      <ion-menu-button color="primary" menu="menu"></ion-menu-button>
     </ion-buttons>
     <ion-title>Detalle</ion-title>
     <ion-buttons slot="end">
@@ -20,7 +20,7 @@
       <ion-row>
 
         <ion-col size-xs="12" size-sm="6">
-          <img [src]="record.img" alt="">
+          <img [src]="img" alt="imágen">
         </ion-col>
 
         <ion-col size-xs="12" size-sm="6">
@@ -34,10 +34,10 @@
               <h1>Results</h1>
             </ion-list-header>
 
-            <div *ngFor="let prediction of record.predictions; let i = index">
+            <div *ngFor="let prediction of predictions; let i = index">
               <ion-item *ngIf="(prediction.probability * 100) > 70">
                 <ion-label class="ion-text-wrap">
-                  <h2>{{prediction.tagName}}</h2>
+                  <h2 class="ion-text-capitalize">{{prediction.tagName}}</h2>
                   <h3>%{{(prediction.probability * 100)}}</h3>
                 </ion-label>
               </ion-item>
