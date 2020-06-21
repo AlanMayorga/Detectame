@@ -1,0 +1,17 @@
+<ion-menu side="start" menuId="menu" contentId="main" type="push">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title class="ion-text-center">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle *ngFor="let section of sections">
+        <ion-item [routerLink]="section.url" routerLinkActive="router-link-active">
+          <ion-icon [name]="section.icon" slot="start"></ion-icon>
+          <ion-label>{{section.title}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

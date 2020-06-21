@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">detectame</string>
+    <string name="title_activity_main">detectame</string>
+    <string name="package_name">com.detectame.detectame</string>
+    <string name="custom_url_scheme">com.detectame.detectame</string>
+</resources>

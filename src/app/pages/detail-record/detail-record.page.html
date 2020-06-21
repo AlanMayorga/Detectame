@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="delete()">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size-xs="12" size-sm="6">
+          <img [src]="record.img" alt="">
+        </ion-col>
+
+        <ion-col size-xs="12" size-sm="6">
+
+          <ion-card-title class="ion-text-uppercase ion-text-center">
+            <h1>{{name}}</h1>
+          </ion-card-title>
+
+          <ion-list>
+            <ion-list-header>
+              <h1>Results</h1>
+            </ion-list-header>
+
+            <div *ngFor="let prediction of record.predictions; let i = index">
+              <ion-item *ngIf="i <= 2">
+                <ion-label class="ion-text-wrap">
+                  <h2>{{prediction.tagName}}</h2>
+                  <h3>%{{(prediction.probability * 100)}}</h3>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ion-list>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+</ion-content>
